@@ -41,6 +41,8 @@ footer {
   margin-bottom: 1rem;
   width: 100%;
   text-align: center;
+  background-color: white;
+  z-index: 1000;
 }
 .content-wrap {
   height: 74vh;
@@ -77,6 +79,9 @@ footer {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  .content-wrap {
+    height: 65vh;
+  }
   .content-wrap,
   .content {
     transform: translate(-3%, 0%);
@@ -87,6 +92,6 @@ footer {
     white-space: nowrap;
   }
   footer {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
