@@ -94,4 +94,8 @@ footer {
   footer {
     font-size: 10px;
   }
+  .github-icon {
+    width: 0.9rem;
+    height: auto;
+  }
 }
