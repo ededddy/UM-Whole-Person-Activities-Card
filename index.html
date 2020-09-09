@@ -87,64 +87,10 @@
       content="./images/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="app.js"></script>
-    <style>
-      html {
-        overflow: hidden;
-      }
-      .custom-progress {
-        width: 91.333333%;
-        border-radius: 9999px;
-        background-color: white;
-        border: 1px solid #cbd5e0;
-      }
-
-      .custom-bar {
-        border-radius: 9999px;
-        background-color: cyan;
-        width: 30%;
-        -webkit-animation: load 1s linear infinite;
-        animation: load 1s linear infinite;
-        position: absolute;
-      }
-      @-webkit-keyframes load {
-        0% {
-          right: 70%;
-        }
-        100% {
-          right: 0;
-        }
-      }
-      @keyframes load {
-        0% {
-          right: 70%;
-        }
-        100% {
-          right: 0;
-        }
-      }
-      footer {
-        font-size: 21px;
-        bottom: 0;
-        position: fixed;
-        border-top: 1px solid #cbd5e0;
-        padding-top: 1rem;
-        margin-bottom: 1rem;
-        width: 100%;
-        text-align: center;
-      }
-      .content-wrap {
-        height: 70vh;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-      }
-      .content {
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-    </style>
   </head>
 
   <body>
@@ -167,7 +113,10 @@
         </div>
         <!-- content -->
         <div class="twelve wide stretched column">
-          <div class="ui segment" style="margin-right: 2rem">
+          <div
+            class="ui segment"
+            style="margin-left: 5% !important; margin-right: 2rem !important"
+          >
             <div v-if="loading">
               <v-loading
                 style="

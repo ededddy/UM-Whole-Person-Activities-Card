@@ -1,0 +1,52 @@
+html {
+  overflow: hidden;
+}
+.custom-progress {
+  width: 91.333333%;
+  border-radius: 9999px;
+  background-color: white;
+  border: 1px solid #cbd5e0;
+}
+
+.custom-bar {
+  border-radius: 9999px;
+  background-color: cyan;
+  width: 30%;
+  -webkit-animation: load 1s linear infinite;
+  animation: load 1s linear infinite;
+  position: absolute;
+}
+@-webkit-keyframes load {
+  0% {
+    right: 70%;
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes load {
+  0% {
+    right: 70%;
+  }
+  100% {
+    right: 0;
+  }
+}
+footer {
+  font-size: 21px;
+  bottom: 0;
+  position: fixed;
+  border-top: 1px solid #cbd5e0;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+.content-wrap {
+  height: 70vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.content {
+  margin-left: 5% !important;
+}
