@@ -15,33 +15,58 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="app.js"></script>
     <style>
+      html {
+        overflow: hidden;
+      }
       .custom-progress {
         width: 91.333333%;
         border-radius: 9999px;
         background-color: white;
+        border: 1px solid #cbd5e0;
       }
 
       .custom-bar {
         border-radius: 9999px;
         background-color: cyan;
+        width: 30%;
         -webkit-animation: load 1s linear infinite;
         animation: load 1s linear infinite;
+        position: absolute;
       }
       @-webkit-keyframes load {
         0% {
-          width: 0%;
+          right: 70%;
         }
         100% {
-          width: 100%;
+          right: 0;
         }
       }
       @keyframes load {
         0% {
-          width: 0%;
+          right: 70%;
         }
         100% {
-          width: 100%;
+          right: 0;
         }
+      }
+      footer {
+        font-size: 21px;
+        bottom: 0;
+        position: fixed;
+        border-top: 1px solid #cbd5e0;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        text-align: center;
+      }
+      .content-wrap {
+        height: 70vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+      }
+      .content {
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
     </style>
   </head>
@@ -67,45 +92,60 @@
         <!-- content -->
         <div class="twelve wide stretched column">
           <div class="ui segment" style="margin-right: 2rem">
-            <div class="ui link cards" style="margin: 2rem">
-              <div v-if="loading">
-                <v-loading style="position: absolute; top: 50%" />
-              </div>
-              <div v-if="!loading" class="card fluid" v-for="activity in items">
-                <div class="image">
-                  <img
-                    src="https://www.um.edu.mo/sao/sds/std/wpdap/WP%20Logo.jpg"
-                  />
-                </div>
-
-                <div class="content">
-                  <a class="header" :href="activity.link" target="_blank"
-                    >{{ activity.activity }}</a
-                  >
-
-                  <div class="meta">
-                    <span class="date">
-                      <b>{{ activity.date }}</b> <br />
-                      <b>{{ activity.time }}</b>
-                    </span>
+            <div v-if="loading">
+              <v-loading
+                style="
+                  position: absolute;
+                  top: 50%;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              />
+            </div>
+            <div class="content-wrap">
+              <div class="ui link cards content">
+                <div
+                  v-if="!loading"
+                  class="card fluid"
+                  v-for="activity in items"
+                >
+                  <div class="image">
+                    <img
+                      src="https://www.um.edu.mo/sao/sds/std/wpdap/WP%20Logo.jpg"
+                    />
                   </div>
 
-                  <div class="description grid">
-                    <div class="segment">
-                      <b>Orgainised By</b>: {{ activity.organizer }}
-                    </div>
-                    <div class="segment">
-                      <b>Area</b>: {{ activity.wpArea }}
-                    </div>
-                    <div class="segment"><b>Scores</b>: {{ activity.CS }}</div>
-                  </div>
-                </div>
+                  <div class="content">
+                    <a class="header" :href="activity.link" target="_blank"
+                      >{{ activity.activity }}</a
+                    >
 
-                <div class="extra content">
-                  <a>
-                    <i class="street view icon"></i>
-                    at {{ activity.venue }}
-                  </a>
+                    <div class="meta">
+                      <span class="date">
+                        <b>{{ activity.date }}</b> <br />
+                        <b>{{ activity.time }}</b>
+                      </span>
+                    </div>
+
+                    <div class="description grid">
+                      <div class="segment">
+                        <b>Orgainised By</b>: {{ activity.organizer }}
+                      </div>
+                      <div class="segment">
+                        <b>Area</b>: {{ activity.wpArea }}
+                      </div>
+                      <div class="segment">
+                        <b>Scores</b>: {{ activity.CS }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="extra content">
+                    <a>
+                      <i class="street view icon"></i>
+                      at {{ activity.venue }}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,5 +153,10 @@
         </div>
       </div>
     </div>
+    <footer>
+      Made by <a href="http://github.com/ededddy/">Eddy</a>. Contact
+      <a href="mailto:eddylei070300@gmail.com">eddylei070300@gmail.com</a> if
+      you have any <b>issue</b> or <b>suggestion</b>
+    </footer>
   </body>
 </html>

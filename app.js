@@ -1,6 +1,6 @@
 var LoadingBar = {
   template:
-    '<div class="custom-progress" style="height: 10"><div class="custom-bar" style="height: 10px"></div></div>',
+    '<div class="custom-progress" style="height: 10px"><div class="custom-bar" style="height: 10px"></div></div>',
 };
 new Vue({
   el: "#app",
