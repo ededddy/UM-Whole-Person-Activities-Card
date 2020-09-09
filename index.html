@@ -1,54 +1,117 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> UM Wholeperson</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UM Wholeperson</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Semantic ui import -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="app.js"></script>
+    <style>
+      .custom-progress {
+        width: 91.333333%;
+        border-radius: 9999px;
+        background-color: white;
+      }
+
+      .custom-bar {
+        border-radius: 9999px;
+        background-color: cyan;
+        -webkit-animation: load 1s linear infinite;
+        animation: load 1s linear infinite;
+      }
+      @-webkit-keyframes load {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      @keyframes load {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div id="app">
-      <h1 class="ui header" style="text-align: center;">UM Whole Person</h1>
-      <div class="ui link cards" style="justify-content: space-evenly;">
-        <div class="card" v-for="activity in activities">
-
-          <div class="image">
-            <img src="https://www.um.edu.mo/sao/sds/std/wpdap/WP%20Logo.jpg">
-          </div>
-
-          <div class="content">
-
-            <a class="header" :href="activity.link" target="_blank">{{ activity.activity }}</a>
-
-            <div class="meta">
-              <span class="date"> <b>{{ activity.date }}</b> <br /> <b>{{ activity.time }}</b> </span>
-            </div>
-
-            <div class="description">
-              <b>Orgainised By</b>: {{ activity.organizer }}<br />
-              <b>Area</b>: {{ activity.wpArea }} <br />
-              <b>Scores</b>: {{ activity.CS }} <br />
-            </div>
-
-          </div>
-
-          <div class="extra content">
-            <a>
-              <i class="street view icon"></i>
-              at {{ activity.venue }}
+    <div id="app" style="margin: 1.25rem">
+      <h1 class="ui header" style="text-align: center">UM Whole Person</h1>
+      <div class="ui grid">
+        <!-- side panel -->
+        <div class="four wide column">
+          <div class="ui vertical fluid tabular menu">
+            <a class="item active" @click="updateItems('', $event)">All</a>
+            <a
+              :key="idx"
+              @click="updateItems(area, $event)"
+              v-for="(area, idx) of areas"
+              class="item"
+            >
+              {{area}}
             </a>
           </div>
-      
+        </div>
+        <!-- content -->
+        <div class="twelve wide stretched column">
+          <div class="ui segment" style="margin-right: 2rem">
+            <div class="ui link cards" style="margin: 2rem">
+              <div v-if="loading">
+                <v-loading style="position: absolute; top: 50%" />
+              </div>
+              <div v-if="!loading" class="card fluid" v-for="activity in items">
+                <div class="image">
+                  <img
+                    src="https://www.um.edu.mo/sao/sds/std/wpdap/WP%20Logo.jpg"
+                  />
+                </div>
+
+                <div class="content">
+                  <a class="header" :href="activity.link" target="_blank"
+                    >{{ activity.activity }}</a
+                  >
+
+                  <div class="meta">
+                    <span class="date">
+                      <b>{{ activity.date }}</b> <br />
+                      <b>{{ activity.time }}</b>
+                    </span>
+                  </div>
+
+                  <div class="description grid">
+                    <div class="segment">
+                      <b>Orgainised By</b>: {{ activity.organizer }}
+                    </div>
+                    <div class="segment">
+                      <b>Area</b>: {{ activity.wpArea }}
+                    </div>
+                    <div class="segment"><b>Scores</b>: {{ activity.CS }}</div>
+                  </div>
+                </div>
+
+                <div class="extra content">
+                  <a>
+                    <i class="street view icon"></i>
+                    at {{ activity.venue }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-
-    <script src="app.js"></script>
+    </div>
   </body>
-
 </html>
