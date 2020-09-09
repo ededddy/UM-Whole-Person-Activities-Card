@@ -16,4 +16,5 @@ My WrapAPI page :
 https://wrapapi.com/api/ededdy/umwp/news/0.0.3
 
 # Future 
--[ ] Add to calendar support 
+- [ ] Add to calendar support 
+- [ ] New icon set
