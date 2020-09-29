@@ -1,3 +1,8 @@
+# Refactored with node js to serve a static site
+repo: 
+https://github.com/ededddy/UM-Whole-Person-Activity-List/tree/master
+
+
 # UM-Whole-Person-Activities-Card
 
 My own tool for checking CS score related activities at University of Macau.  
